@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  # NestJS Application
+  app:
+    build: .
+    command: pnpm run start:dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src:/app/src
+    environment:
+      # URL for NestJS connect to RabbitMQ
+      RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672
+    depends_on:
+      - rabbitmq
+
+  # RabbitMQ Service
+  rabbitmq:
+    image: rabbitmq:3.9-management-alpine
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"   # Port for Application
+      - "15672:15672" # Port for Management UI
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
