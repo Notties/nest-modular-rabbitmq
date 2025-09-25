@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { HrSubscriber } from './hr.subscriber';
 
 @Module({
-  providers: [HrSubscriber],
+  imports: [],
+  controllers: [HrSubscriber],
+  providers: [],
 })
 export class HrModule {}

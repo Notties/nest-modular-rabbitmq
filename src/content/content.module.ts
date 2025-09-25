@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { ContentSubscriber } from './content.subscriber';
 
 @Module({
-  providers: [ContentSubscriber],
+  imports: [],
+  controllers: [ContentSubscriber],
+  providers: [],
 })
 export class ContentModule {}

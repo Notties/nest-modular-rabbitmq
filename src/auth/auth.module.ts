@@ -16,7 +16,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
           ],
           queue: 'app_queue',
           queueOptions: {
-            durable: false,
+            durable: true,
           },
         },
       },
